@@ -89,6 +89,12 @@ import cn.zhucongqi.exception.AuthProblemException;
  */
 public class AccessTokenValidator extends AuthValidator<HttpServletRequest> {
 
+	private String clientId = null;
+	private String clientSecret = null;
+	private String userName = null;
+	private String password = null;
+	private String code = null;
+	
     public AccessTokenValidator() {
     	// Value MUST be set to "token".
         requiredParams.add(Consts.AuthConsts.AUTH_RESPONSE_TYPE);
@@ -111,5 +117,92 @@ public class AccessTokenValidator extends AuthValidator<HttpServletRequest> {
     	super.validate(request);
     	this.validateClientCredentials(request);
     }
+    
+    /**
+     * get client parameters
+     * @param request
+     */
+    protected void getClientParameters(HttpServletRequest request) {
+    	String clientId = request.getParameter(Consts.AuthConsts.AUTH_CLIENT_ID);
+    	this.setClientId(clientId);
+    	String clientSecret = request.getParameter(Consts.AuthConsts.AUTH_CLIENT_SECRET);
+    	this.setClientSecret(clientSecret);
+    	String userName = request.getParameter(Consts.AuthConsts.AUTH_USERNAME);
+    	this.setUserName(userName);
+    	String passowrd = request.getParameter(Consts.AuthConsts.AUTH_PASSWORD);
+    	this.setPassword(passowrd);
+    	String code = request.getParameter(Consts.AuthConsts.AUTH_CODE);
+    	this.setCode(code);
+    }
 
+	/**
+	 * @return the clientId
+	 */
+	public String getClientId() {
+		return clientId;
+	}
+
+	/**
+	 * @param clientId the clientId to set
+	 */
+	private void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
+
+	/**
+	 * @return the clientSecret
+	 */
+	public String getClientSecret() {
+		return clientSecret;
+	}
+
+	/**
+	 * @param clientSecret the clientSecret to set
+	 */
+	private void setClientSecret(String clientSecret) {
+		this.clientSecret = clientSecret;
+	}
+
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+
+	/**
+	 * @param userName the userName to set
+	 */
+	private void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	private void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * @param code the code to set
+	 */
+	private void setCode(String code) {
+		this.code = code;
+	}
+    
 }

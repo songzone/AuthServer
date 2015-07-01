@@ -142,6 +142,8 @@ import cn.zhucongqi.consts.Consts;
  */
 public class AuthorizationValidator extends AuthValidator<HttpServletRequest> {
 
+	private String clientId = null;
+	
     public AuthorizationValidator() {
     	//Value MUST be set to "code".
         requiredParams.add(Consts.AuthConsts.AUTH_RESPONSE_TYPE);
@@ -152,5 +154,29 @@ public class AuthorizationValidator extends AuthValidator<HttpServletRequest> {
 	public void paramMustValues() {
 		paramMustValues.put(Consts.AuthConsts.AUTH_RESPONSE_TYPE, Consts.ResponseType.CODE);
 	}
+
+	/**
+     * get client parameters
+     * @param request
+     */
+    protected void getClientParameters(HttpServletRequest request) {
+    	String clientId = request.getParameter(Consts.AuthConsts.AUTH_CLIENT_ID);
+		this.setClientId(clientId);
+    }
+
+	/**
+	 * @return the clientId
+	 */
+	public String getClientId() {
+		return clientId;
+	}
+
+	/**
+	 * @param clientId the clientId to set
+	 */
+	private void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
+    
 }
 

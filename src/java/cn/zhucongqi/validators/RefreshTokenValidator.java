@@ -84,6 +84,8 @@ import cn.zhucongqi.consts.Consts;
  */
 public class RefreshTokenValidator extends AuthValidator<HttpServletRequest> {
 
+	private String refreshToken = null;
+	
     public RefreshTokenValidator() {
     	// Value MUST be set to "token".
         requiredParams.add(Consts.AuthConsts.AUTH_RESPONSE_TYPE);
@@ -96,5 +98,28 @@ public class RefreshTokenValidator extends AuthValidator<HttpServletRequest> {
 	public void paramMustValues() {
 		paramMustValues.put(Consts.AuthConsts.AUTH_RESPONSE_TYPE, Consts.ResponseType.TOKEN);
 		paramMustValues.put(Consts.AuthConsts.AUTH_GRANT_TYPE, Consts.GrantType.REFRESH_TOKEN);
+	}
+	
+	/**
+     * get client parameters
+     * @param request
+     */
+    protected void getClientParameters(HttpServletRequest request) {
+    	String refreshToken = request.getParameter(Consts.AuthConsts.AUTH_REFRESH_TOKEN);
+    	this.setRefreshToken(refreshToken);
+    }
+
+	/**
+	 * @return the refreshToken
+	 */
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+
+	/**
+	 * @param refreshToken the refreshToken to set
+	 */
+	private void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
 	}
 }

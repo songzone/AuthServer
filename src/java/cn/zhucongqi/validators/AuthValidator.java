@@ -121,6 +121,14 @@ public abstract class AuthValidator<T extends HttpServletRequest> {
 			throw AuthKit.handleMissingParameters(missingParameters);
 		}
 	}
+    
+    /**
+     * get client parameters
+     * @param request
+     */
+    protected void getClientParameters(T request) {
+    	
+    }
 
     /**
      * validate request
@@ -133,5 +141,7 @@ public abstract class AuthValidator<T extends HttpServletRequest> {
         this.validateMethod(request);
         this.validateRequiredParameters(request);
         this.validateRequiredParameterValues(request);
+        this.getClientParameters(request);
     }
+    
 }
