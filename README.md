@@ -1,1 +1,1 @@
-#jfinal_template
+#AuthServer
