@@ -19,6 +19,10 @@ import cn.zhucongqi.exception.AuthProblemException;
  */
 public class ErrorResponse extends Response {
 
+	public ErrorResponse(HttpServletRequest request) {
+		super(request);
+	}
+
 	public ErrorResponse(HttpServletRequest request, AuthProblemException e) {
 		super(request);
 		this.setError(e.getError());
