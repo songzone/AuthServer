@@ -33,8 +33,11 @@ public class AuthController extends ControllerExt {
          shortly after it is issued to mitigate the risk of leaks.  A
          maximum authorization code lifetime of 10 minutes is
          RECOMMENDED.
-     * state : The exact value received from the
-         client.
+	 * scope : The scope of the access request; <br/>
+     * state : An opaque value used by the client to maintain
+         state between the request and callback.The authorization
+         server includes this value when redirecting the user-agent back
+         to the client. <br/>
      * Failure => <br/>
      * error : ErrorConsts.TokenResponse <br/>
      * error_description : the erros repsonse description <br/>
