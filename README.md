@@ -58,7 +58,7 @@
 
 #### 错误返回参数
 	
-	- error ： 错误信息；
-	- error_description : 错误描述；
-	- scope: 为系统定义的范围；
-	- state : 为系统定义的state;
+- error ： 错误信息；
+- error_description : 错误描述；
+- scope: 为系统定义的范围；
+- state : 为系统定义的state;
